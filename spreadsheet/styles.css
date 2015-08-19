@@ -1,0 +1,41 @@
+tr {
+  border: 1px gray solid;
+}
+
+td {
+  border: 2px black solid;
+}
+
+div.table {
+  position:relative;
+}
+div.data {
+  position: absolute;
+  width: 90px;
+  padding: 0 5px;
+}
+
+div.head {
+  position: absolute;
+}
+
+div.datarow {
+  position: absolute;
+  width: 100%;
+  border-top: 2px black solid;
+  background: white;
+  height: 35px;
+  overflow: hidden;
+}
+
+div.gallery {
+  position: relative;
+}
+
+img.infinite {
+  position: absolute;
+  background: rgba(255,255,255,0);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0);
+}

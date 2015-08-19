@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div id="traditional"></div>
+</body>
+
+<script>
+
+d3.json("tweets.json", function(error, data) {
+	createSpreadsheet(data.tweets)});
+
+	function createSpreadsheet(incData) {
+
+		var keyValues = d3.keys(incData[0]);
+
+		d3.select("#traditional")
+			.append("div")
+			.attr("class", "table");
+
+		d3.select("div.table")
+			.append("div")
+			.attr("class", "head")
+			.selectAll("div.data")
+			.data(keyValues)
+			.enter()
+			.append("div")
+			.attr("class", "data")
+			.html(function (d) {return d})
+			.style("left", function(d,i) {return (i * 100) + "px";});
+
+		d3.select("div.table")
+			.selectAll("div.datarow")
+			.data(incData, function (d) {return d.content})
+			.enter()
+			.append("div")
+			.attr("class", "datarow")
+			.style("top", function (d,i) {return (40 + (i * 40)) + "px";});
+
+		d3.selectAll("div.datarow")
+			.selectAll("div.data")
+			.data(function(d) {return d3.entries(d)})
+			.enter()
+			.append("div")
+			.attr("class", "data")
+			.html(function (d) {return d.value})
+			.style("left", function (d,i,j) {return (i * 100) + "px";});
+
+	}
+
+</script>
+</html>
