@@ -139,8 +139,10 @@ var newWidth = parseFloat(d3.select("div.gallery").node().clientWidth);
       var selectValue = d3.select("select").node().value;
       var newWidth = parseFloat(d3.select("div.gallery").node().clientWidth);
       var imageSize = newWidth / 8;
+
   var scrollTarget = Math.floor(selectValue / 8) * imageSize;
-  
+  console.log(scrollTarget);
+
   d3.selectAll("img").filter(function(d) {return d.x == selectValue})
   .transition().duration(2000).style("width", imageSize * 2)
     .style("background", "rgba(255,255,255,1)")
@@ -155,7 +157,8 @@ var newWidth = parseFloat(d3.select("div.gallery").node().clientWidth);
 
 function scrollTopTween(scrollTo) { 
     return function() { 
-        var i = d3.interpolateNumber(this.scrollTop, scrollTo); 
+        var i = d3.interpolateNumber(this.scrollTop, scrollTo);
+        console.log(scrollTarget); 
         return function(t) { this.scrollTop = i(t); };
     }; 
 } 
