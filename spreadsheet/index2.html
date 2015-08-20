@@ -33,7 +33,7 @@ d3.json("tweets.json", function(error, data) {
 
 		d3.select("div.table")
 			.selectAll("div.datarow")
-			.data(incData, function (d) {return d.content})
+			.data(incData, function (d) {return d.client})
 			.enter()
 			.append("div")
 			.attr("class", "datarow")
@@ -41,7 +41,7 @@ d3.json("tweets.json", function(error, data) {
 
 		d3.selectAll("div.datarow")
 			.selectAll("div.data")
-			.data(function(d) {return d3.entries(d)})
+			.data(function(d) {console.log(d); return d3.entries(d)})
 			.enter()
 			.append("div")
 			.attr("class", "data")
