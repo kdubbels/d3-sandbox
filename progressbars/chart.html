@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Progress Bar</title>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+// d3.json("carmel_tables.json", function (error, dataset) {
+
+//     var map = d3.map(dataset);
+//     var nest = d3.nest()
+// 	.key(function (d) { return d.project; })
+// 	.entries(dataset);
+// 	console.log(nest);
+// 	var headRow = Object.keys(dataset[0]);
+// 	console.log(dataset);
+// 	console.log(headRow);
+
+var dataset = { currentYear: {investment: 46623609, expense: -20237902, revenue: 26385707}, 
+				lastYear: {investment: 27842858,expense: -15105936,revenue: 12736922}};
+
+console.log(dataset);
+		// var dataset = [{key: 'distribution', progress: 300, total: 400}];
+
+
+		var width = 2062,
+			height = 631,
+			spaceForLabels = 160;
+
+    	var svg = d3.select("body").append("svg");
+    	
+    	svg.attr("height", height)
+       		.attr("width", spaceForLabels + width);
+
+       	var bars = svg.append("g")
+       			.attr("class","bars")
+       			.attr("transform", function(d) { return "translate(" + spaceForLabels + "," + 2 + ")";
+    });
+
+		var progress = bars.selectAll("rect")
+					.data(dataset)
+				  .enter().append("rect")
+				  	.attr("id", "progress")
+				  	.attr("x", 0)
+				  	.attr("width", function(d){return (d.progress);})
+				  	.attr("height", 50)
+			        .style("fill", "orange")
+			        .attr("stroke-width", 2)
+			        .attr("stroke", "black");
+
+		var total = progress.select("rect")
+					.data(dataset)
+				  .enter().append("rect")
+				  	.attr("id", "total")
+				  	.attr("x", function(d){return (d.progress + 2 );}) //accounts for stroke-width, visually distorting, but barely. The mockup itself is, frankly, conducive to distortion
+				  	.attr("width", function(d){return (d.total - d.progress);})
+				  	.attr("height", 50)
+			        .style("fill", "steelblue")
+			        .attr("stroke-width", 2)
+			        .attr("stroke", "steelblue");
+					bars.selectAll("text")
+					.data(dataset)
+				  .enter().append("text")
+		    		.attr("class", "label")
+		    		.attr("x", -150)
+		    		.attr("y",30)
+		    		.attr("height", 50)
+		    		.attr("width",150)
+		    		// .attr("y", )
+		    		.text(function(d){console.log(d); return ( d.key = 'distribution' ? "Distribution" : "Foo");});
+				progress.select("text")
+					.data(dataset)
+				  .enter().append("text")
+		    		.attr("class", "barlabel")
+		    		.attr("x", 10)
+		    		.attr("y", 30)
+		    		.attr("height", 50)
+		    		.attr("width",150)
+		    		.text("Foo Bar")
+		    		.attr("fill", "white")
+		    		.attr("font-weight","bold");
+
+// });
+</script>
+
+</body>
+
+</html>
