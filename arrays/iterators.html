@@ -1,0 +1,56 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+
+
+   <script type="text/javascript">
+   var data = [
+     {name: 'Ben', age: 27},
+     {name: 'Flo', age: 22},
+     {name: 'Phil', age: 28},
+     {name: 'Chris', age: 26}
+];
+   var filtered = data.filter(function(d){
+     return d.age > 26;
+});
+   console.log(filtered);
+   // [{name: 'Ben', age: 27}, {name: 'Phil', age: 28}]
+
+
+var data1 = [
+  {name: 'Ben', age: 27},
+  {name: 'Flo', age: 22},
+  {name: 'Phil', age: 28},
+  {name: 'Chris', age: 26}
+];
+
+var mapped = data1.map(function(d){
+  return d.name;
+});
+console.log(mapped);
+// ["Ben", "Flo", "Phil", "Chris"]
+
+var data2 = [9, 16, 25];
+   var mapped = data2.map(Math.sqrt);
+   console.log(mapped);
+   // [3, 4, 5]
+
+var data3 = [
+     {name: 'Ben', age: 27},
+     {name: 'Flo', age: 22},
+     {name: 'Phil', age: 28},
+     {name: 'Chris', age: 26}
+];
+   var total = data3.reduce(function(prev, d, i, array){
+     return prev + d.age;
+}, 0);
+console.log(total);
+// 103
+
+
+   </script>
+</body>
+</html>

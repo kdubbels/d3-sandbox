@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+
+
+   <script type="text/javascript">
+
+var values = [
+     {n: "Peter", age: 25, gender: "male", eyes: "brown"},
+     {n: "Linda", age: 22, gender: "female", eyes: "brown"},
+     {n: "Susi", age: 28, gender: "female", eyes: "blue"},
+     {n: "Hans", age: 36, gender: "male", eyes: "green"},
+     {n: "Carine", age: 42, gender: "female", eyes: "brown"},
+     {n: "Fred", age: 47, gender: "male", eyes: "brown"},
+     {n: "Philipp", age: 19, gender: "male", eyes: "brown"},
+     {n: "Flo", age: 34, gender: "male", eyes: "blue"}
+];
+var sorted_values = d3.nest()
+// Group by property gender (male, female) on 1. level
+.key(function(d) { return d.gender; })
+// Sort 1. level keys with descending order
+     .sortKeys(d3.descending)
+      // Group by property ages (10, 20, 30, 40, 50) on 2. level
+.key(function(d) { return Math.floor(d.age / 10) * 10; }) // Sort 2. level keys with ascending order
+     .sortKeys(d3.ascending)
+      // Add the dataset
+     .entries(values);
+
+     console.log(sorted_values);
+   </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+<!-- <div id="traditional"></div> -->
+</body>
+
+<script>
+  function join_p(dataSet) {
+     var el = d3.select('body');
+      var join = el
+       // get the selection of all p elements
+       .selectAll('p')
+       // join the selection with the dataset
+       .data(dataSet);
+     // elements not yet in the selection
+     // they need to be added
+     join.enter().append('p');
+     // elements currently in the selection
+     // they need to be updated
+     join.text(function(d) { return d; });
+  // elements still in selection
+  // they need to be removed
+  join.exit()
+   .remove('p')
+  ;}
+</script>
+</body>
