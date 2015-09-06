@@ -1,0 +1,57 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<style>
+path {
+  stroke-width: 2;
+  fill:none;
+  stroke:steelblue;
+}
+</style>
+</head>
+<body>
+
+
+   <script type="text/javascript">
+var points =[[15,15], [200, 300], [400,100]];
+
+var svg = d3.select("body").append("svg")
+     .attr("width", 800)
+     .attr("height", 400);
+
+
+var line = d3.svg.line();
+   var path1 = svg.append("path")
+     .datum(points)
+     .attr("d", line);
+
+      var path1 = svg.append("path")
+           .datum(points)
+           .style("stroke", 'green')
+           .attr("d", line.interpolate('cardinal').tension(0));
+         var path2 = svg.append("path")
+           .datum(points)
+           .style("stroke", 'yellow')
+           .attr("d", line.interpolate('cardinal').tension(0.25));
+         var path3 = svg.append("path")
+           .datum(points)
+           .style("stroke", 'orange')
+           .attr("d", line.interpolate('cardinal').tension(0.5));
+        var path4 = svg.append("path")
+           .datum(points)
+           .style("stroke", 'red')
+           .attr("d", line.interpolate('cardinal').tension(0.75));
+         var path4 = svg.append("path")
+           .datum(points)
+           .style("stroke", 'steelblue')
+           .attr("d", line.interpolate('cardinal').tension(1));
+
+
+        var area = d3.svg.area() .y0(390);
+        var shape1 = svg.append("path")
+  .datum(points)
+  .attr("d", area)
+  .attr("fill", "silver");
+   </script>
+</body>
+</html>

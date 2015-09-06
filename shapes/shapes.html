@@ -1,0 +1,59 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<style type="text/css">
+path {
+  stroke-width: 2;
+}
+circle {
+  stroke: none
+} </style>
+</head>
+<body>
+
+
+   <script type="text/javascript">
+var svg1 = d3.select("body").append("svg")
+     .attr("width", 800)
+     .attr("height", 400);
+
+var polygon = svg1.append("polygon")
+     .attr("points", "350,75  379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161");
+
+
+   var svg = d3.select("body").append("svg")
+     .attr("width", 800)
+     .attr("height", 400);
+   var polygon = svg.append("path")
+     .attr("d", 'M350,75  L379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161 z')
+     .attr("fill", "orange")
+     .attr("stroke", "steelblue");
+
+
+    var line1 = svg.append("path")
+     .style("stroke", 'steelblue')
+     .attr("d", 'M10,10  L100,100 300,100 400,10');
+
+var hline1 = svg.append("path")
+     .style("stroke", 'red')
+     .attr("d", 'M10,1  H400');
+   var hline2 = svg.append("path")
+     .style("stroke", 'red')
+     .attr("d", 'M10,110  H400');
+
+     var vline1 = svg.append("path")
+     .style("stroke", 'green')
+     .attr("d", 'M1,0 V110');
+   var vline2 = svg.append("path")
+     .style("stroke", 'green')
+     .attr("d", 'M410,0  V110');
+
+
+   var cubic = svg.append("path")
+     .attr("d", 'M15,15  C15,300 200,15 400,200');
+   var quadratic = svg.append("path")
+     .attr("d", 'M15,15  Q200,300 400,100');
+
+   </script>
+</body>
+</html>
