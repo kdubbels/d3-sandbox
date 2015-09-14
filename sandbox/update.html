@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+<svg width="800" height="500"></svg>
+   <script type="text/javascript">
+   // Create a data array
+   var data = [];
+   // Do every 1s
+   setInterval(function(){
+     // Add new random element to data array
+     if (data.length < 8) {
+       data.push(Math.random());
+     }
+     else {
+       data = [];
+     }
+     // Redraw the scene
+     draw();
+   }, 1000);
+   function draw() {
+      var svg = d3.select('svg');
+   // Bind data array to the Selection
+     var circles = svg.selectAll('circle').data(data);
+     // Update all original elements from the Selection
+     circles
+       .attr('fill', 'orange');
+     // Update all elements, that are new to the Selection
+     circles.enter()
+       .append('circle')
+       .attr('fill', 'red')
+       .attr('r', 40)
+       .attr('cx', function(d, i) { return i*100 + 50; })
+       .attr('cy', 50);
+     // Update all elements in the Selection
+     circles
+       .style('stroke', 'black');
+     // Update all elements, that are removed from the Selection
+     circles.exit()
+.delay()
+.remove(); }
+</script>
+</body>
+</html>

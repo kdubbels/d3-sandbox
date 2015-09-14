@@ -1,0 +1,81 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+
+
+<svg width="800" height="500"></svg>
+   <script type="text/javascript">
+function randPoint() {
+     var rand = Math.random;
+     return { x:rand()*10, y: rand()*10, r: rand()*10 };
+   }
+   //Next, we create an array of data and fill it with random data   points.
+   // Create a data array
+   var data = [];
+   // Add 300 random elements
+   for (var i=0; i < 300; i++) {
+     data.push(randPoint());
+   }
+
+   // Get the Selection of the svg element
+   var svg = d3.select('svg');
+   
+   // Set a key function to identify the elements
+   function key(d, i) {
+     return d.x + '#' + d.y;
+   }
+   // Bind data array to the Selection
+   var circles = svg.selectAll('circle').data(data, key);
+
+
+   // Add circles for new data
+   circles.enter()
+   .append('circle')
+   .attr('r', function(d) { return d.r; })
+   .attr('cx', function(d) { return d.x*70 + 10; })
+   .attr('cy', function(d) { return d.y*40 + 10; })
+   .attr('fill', function(d) {
+     return 'rgb(' + parseInt(d.r*25) + ',0,0)';
+   });
+
+function draw() {
+     // Get the Selection of the svg element
+     var svg = d3.select('svg');
+     // Set a key function to identify the elements
+     function key(d, i) {
+       return d.x + '#' + d.y;
+   }
+     // Bind data array to the Selection
+     var circles = svg.selectAll('circle').data(data, key);
+     // Add circles for new data
+     circles.enter()
+     .append('circle')
+     .attr('r', function(d) { return d.r; })
+     .attr('cx', function(d) { return d.x*70 + 10; })
+     .attr('cy', function(d) { return d.y*40 + 10; });;
+     // Update the color of all circles
+     circles
+     .attr('fill', function(d) {
+       return 'rgb(' + parseInt(d.r*25) + ',0,0)';
+     });
+     // Delete circles when removed from data
+     circles.exit()
+     .remove();
+}
+
+// Do every 150ms
+   setInterval(function(){
+     // Remove first element from data array
+     data.shift();
+     // Add new random element to data array
+     data.push(randPoint());
+     // Redraw the scene
+     draw();
+   }, 150);
+
+   </script>
+</body>
+</html>

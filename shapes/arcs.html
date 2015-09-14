@@ -1,0 +1,47 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<style>
+path {
+  stroke-width: 2;
+  fill:none;
+  stroke:steelblue;
+}
+</style>
+</head>
+<body>
+
+
+   <script type="text/javascript">
+var svg = d3.select("body").append("svg")
+     .attr("width", 800)
+     .attr("height", 400);
+
+var arc1 = d3.svg.arc()
+     .innerRadius(40)
+     .outerRadius(100)
+     .startAngle(0)
+     .endAngle(1);
+   var shape1 = svg.append("path")
+     .attr("d", arc)
+     .attr("transform", 'translate(200,200)');
+
+var points =[[0,15,'red'], [20, 90,'green'], [110,180,'orange']];
+   var arc = d3.svg.arc()
+     .innerRadius(40)
+     .outerRadius(100)
+     .startAngle(function(d){return d[0] * Math.PI/180;})
+     .endAngle(function(d){return d[1] * Math.PI/180;});
+   var shape1 = svg.selectAll("path")
+     .data(points)
+     .enter().append("path")
+     .attr("d", arc)
+     .style("fill", function(d) { return d[2]; })
+     .attr("transform", 'translate(200,200)');
+
+
+
+
+        </script>
+</body>
+</html>

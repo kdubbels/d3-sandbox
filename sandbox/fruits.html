@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+   <p>Some fruits:</p>
+   <p class="item" id="first-item">Apple</p>
+   <p class="item" id="second-item">Banana</p>
+   <p class="item" id="third-item">Orange</p>
+
+   <script type="text/javascript">
+     // Select all p tags
+     var ps = d3.selectAll('p');
+     // Select all elements with the class 'item'
+     var items = d3.selectAll('.item');
+     // Select the first element with the id 'first-item'
+     var first = d3.select('#first-item');
+     // Add a HTML attribute to all p tags
+     ps.attr('align', 'center');
+     // Change the background-color of the items
+     items.style('background-color', 'red');
+     // Remove the element #first-item from the DOM
+     first.remove();
+</script>
+</body>
+</html>

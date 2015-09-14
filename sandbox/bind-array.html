@@ -1,0 +1,47 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+</head>
+<body>
+
+<svg width="400" height="200">
+     <circle />
+     <circle />
+     <circle />
+     <circle />
+</svg>
+
+<script type="text/javascript">
+     // Create a data array containing objects
+     var data = [
+       {cx:50, cy:50, r: 10, color: '#ff0000'},
+       {cx:150, cy:50, r: 20, color: '#ff0066'},
+       {cx:250, cy:50, r: 30, color: '#ff00aa'},
+       {cx:350, cy:50, r: 40, color: '#ff00ff'}
+];
+     // Bind data array to the Selection
+     var circles = d3.selectAll('circle').data(data);
+// Use dynamic properties for the radius
+ circles.attr('r', function(d, i) { return d.r; });
+
+circles
+// Set the stroke color to black
+.attr('stroke', 'black')
+// Set the fill color
+// depending of the bound object
+.attr('fill', function(d, i) { return d.color; }) // Set the x coordinate of the center
+// depending of the bound object
+.attr('cx', function(d, i) { return d.cx; })
+// Set the y coordinate of the center
+// depending of the bound object
+.attr('cy', function(d, i) { return d.cy; });
+
+
+// circles
+//    .data([10, 20])
+//    .exit()
+// .remove();
+</script>
+</body>
+</html>
