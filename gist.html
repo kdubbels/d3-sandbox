@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>Legends Gist</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+<script>
+  var margin = {top: 20, right: 20, bottom: 60, left: 40},
+      width = 740 - margin.left - margin.right,
+      height = 335 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], 0.6, 0.5);
+
+  var y = d3.scale.linear()
+      .rangeRound([height, 0]);
+
+  var color = d3.scale.ordinal()
+      .range(["#1A436F","#298FC0","#7AC8A5","#B3D455","#FDDC56"]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .tickSize(0)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickSize((width * -1) + 55)
+      .ticks(6, "%");
+
+  d3.json("data.json", function(data) {
+    drawCharts(data);
+  });
+
+  function drawCharts(incomingData) {
+
+    var dataNest = d3.nest()
+        .key(function(d) { return d.question; })
+        .entries(incomingData);
+
+      // var data = dataNest.values;
+
+      var data = dataNest;
+      console.log(dataNest);
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .attr("overflow", "visible");
+
+      svg.append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var answers = d3.keys(data[0]).filter(function(key) { return (key !== "region") && (key !== "question"); });
+      color.domain(answers);
+
+      data.forEach(function(d) {
+        var y0 = 0;
+        d.regions = color.domain().map(function(label) { return { label: label, y0: y0, y1: y0 += +d[label]}; });
+        y0 = 100; // remove this to normalize stacked bars
+        d.regions.forEach(function(d) { d.y0 /= y0; d.y1 /= y0; });
+      });
+
+      x.domain(data.map(function(d) { return d.region; }));
+
+      //draw bar charts
+      var chart = svg.append("g")
+          .attr("class", "chart")
+          .attr("transform", "translate(" + 50 + "," + 50 + ")");
+
+      chart.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(-27," + (height+10) + ")")
+          .call(xAxis);
+      chart.selectAll(".x.axis").selectAll("text").filter(function(d){ return d == "Khyber Pakhtunkhwa"; })
+          .html(function(d){ var str = d.split(" "); return '<tspan x="0">' + str[0] + '</tspan><tspan x="0" dy="1.1em">' + str[1] + '</tspan>'; });
+
+      chart.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+          .attr("fill", "#939598")
+          .attr("font-size", 16)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", "16px")
+          .style("text-anchor", "end");
+      //add svg
+      chart.append("rect")
+          .attr("height", 255)
+          .attr("width", 125)
+          .attr("fill", "#939598")
+          .attr("opacity", ".1");
+
+      //end add svg
+      var region = chart.selectAll(".region")
+          .data(data)
+        .enter().append("g")
+          .attr("class", "g")
+          .attr("transform", function(d) { return "translate(" +  (x(d.region) - 3 - 35/2) + ",1)"; })
+          .style("cursor", "pointer")
+          .on("mouseover", function(q){
+            d3.selectAll("#module-3-" + q.question + "-tooltip")
+                .attr("transform", "translate(" + (event.offsetX) + "," + (event.offsetY) + ")")
+                .style("display", "block")
+              .selectAll("text")
+                .text(function(d){ return Math.floor(q[d]) + "%"; });
+          })
+          .on("mousemove", function(d){
+            d3.selectAll("#module-3-" + d.question + "-tooltip")
+                .attr("transform", "translate(" + (event.offsetX) + "," + (event.offsetY) + ")");
+          })
+          .on("mouseout", function(d){
+            d3.selectAll("#module-3-" + d.question + "-tooltip")
+                .style("display", "none");
+          });
+
+      region.selectAll("rect")
+          .data(function(d) { return d.regions; })
+        .enter().append("rect")
+          .attr("width", 35)
+          .attr("y", function(d) { return y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .style("fill", function(d) { return color(d.label); });
+
+      //create array of bounding box sizes in order to imitate right floated legend boxes w/labels
+      var passed = [];
+
+      function boundingBox(array) {
+        passed.push(array);
+        return passed.reduce(function(r, a) {
+          if (r.length > 0)
+            a += r[r.length - 1];
+          r.push(a);
+          return r;
+        }, []);;
+      }
+
+      //draw legends
+      var legend = svg.selectAll(".mod3Legends")
+          .data(color.domain()).enter()
+        .append("g")
+          .attr("class", "mod3Legends")
+          .attr("transform", "translate(" + 50 + "," + (-18) + ")");
+
+      legend.append("rect")
+          .attr("class", "mod3Legend")
+          .attr("y", 40)
+          .attr("width", 12)
+          .attr("height", 12)
+          .style("fill", color)
+          .attr("transform", function(d,i) { return "translate(" +  (i*11) + ",0)"; });
+
+      legend
+        .append("text")
+          .attr("font-size", 14)
+          .attr("class", "mod3Legend")
+          .attr("y", 51)
+          .style("display", "none")
+          .text(function(d) { return " " + d +" "; })
+          .attr("transform", function(d,i) { return "translate(" +  ((i*11)+3) + ",0)"; });
+
+      svg.selectAll(".mod3Legend")
+          .style("display", "block")
+          .attr("x", function(d,i) {
+            var bb_position = this.getBBox().width;
+            return (boundingBox(bb_position)[i-1]);
+          });
+
+      var tooltip = svg.append("g")
+          .attr("class", "mod3Tooltip")
+          .attr("id", "module-3-" + dataNest[i].key + "-tooltip")
+          .attr("transform", "translate(" + (margin.left+10) + "," + (margin.top+25) + ")")
+          .style("pointer-events", "none")
+          .style("display", "none");
+      tooltip.append("path")
+          .attr("fill", "rgba(255,255,255,0.85)")
+          .attr("stroke", "#afaa96")
+          .attr("d", function(d) { var height = 20 + 34*answers.length; return "M0,0 l8,-8 v-"+(height-16)/2+" h80 v"+height+" h-80 v-"+(height-16)/2+" Z"; });
+      tooltip.selectAll("text")
+          .data(answers.reverse())
+        .enter().append("text")
+          .text(function(d) { return "XX%"; })
+          .attr("fill", color)
+          .attr("font-size", 28.8)
+          .attr("font-weight", 800)
+          .attr("text-anchor", "end")
+          .attr("dy", "0.1em")
+          .attr("transform", function(d,i) { var height = 20 + 34*answers.length; return "translate(77,"+((i+1)*34 - height/2)+")"; });
+    };
+
+
+</script>
+</body>
+</html>

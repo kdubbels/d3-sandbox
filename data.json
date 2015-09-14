@@ -1,0 +1,307 @@
+[
+  {
+    "question":"Q1",
+    "region":"Pakistan",
+    "completely":15.88,
+    "a lot":15.87,
+    "a moderate amount":25.47,
+    "a little":23.38,
+    "not at all":16.97
+  },
+  {
+    "question":"Q1",
+    "region":"Punjab",
+    "completely":16.47,
+    "a lot":11.72,
+    "a moderate amount":20.02,
+    "a little":24.84,
+    "not at all":25.32
+  },
+  {
+    "question":"Q1",
+    "region":"Sindh",
+    "completely":10.15,
+    "a lot":27.76,
+    "a moderate amount":22.58,
+    "a little":24.53,
+    "not at all":12.84
+  },
+  {
+    "question":"Q1",
+    "region":"Khyber Pakhtunkhwa",
+    "completely":18.71,
+    "a lot":12.59,
+    "a moderate amount":37.59,
+    "a little":19.24,
+    "not at all":8.69
+  },
+  {
+    "question":"Q1",
+    "region":"Balochistan",
+    "completely":20.32,
+    "a lot":11.76,
+    "a moderate amount":30.37,
+    "a little":22.6,
+    "not at all":10.73
+  },
+  {
+    "question":"Q2",
+    "region":"Pakistan",
+    "completely":7.5,
+    "a lot":13.02,
+    "a moderate amount":24.37,
+    "a little":25.7,
+    "not at all":27.5
+  },
+  {
+    "question":"Q2",
+    "region":"Punjab",
+    "completely":10.61,
+    "a lot":12.44,
+    "a moderate amount":16.99,
+    "a little":21.13,
+    "not at all":38.24
+  },
+  {
+    "question":"Q2",
+    "region":"Sindh",
+    "completely":6.72,
+    "a lot":14.31,
+    "a moderate amount":27.42,
+    "a little":30.71,
+    "not at all":19.69
+  },
+  {
+    "question":"Q2",
+    "region":"Khyber Pakhtunkhwa",
+    "completely":2.3,
+    "a lot":12.23,
+    "a moderate amount":29.61,
+    "a little":28.55,
+    "not at all":24.11
+  },
+  {
+    "question":"Q2",
+    "region":"Balochistan",
+    "completely":6.62,
+    "a lot":13.47,
+    "a moderate amount":33.56,
+    "a little":26.6,
+    "not at all":14.38
+  },
+  {
+    "question":"Q3",
+    "region":"Pakistan",
+    "completely":5.98,
+    "a lot":10.78,
+    "a moderate amount":24.4,
+    "a little":17.07,
+    "not at all":37.93
+  },
+  {
+    "question":"Q3",
+    "region":"Punjab",
+    "completely":5.74,
+    "a lot":8.49,
+    "a moderate amount":26.36,
+    "a little":16.07,
+    "not at all":40.51
+  },
+  {
+    "question":"Q3",
+    "region":"Sindh",
+    "completely":11.02,
+    "a lot":16.33,
+    "a moderate amount":21.44,
+    "a little":16.06,
+    "not at all":29.84
+  },
+  {
+    "question":"Q3",
+    "region":"Khyber Pakhtunkhwa",
+    "completely":0.98,
+    "a lot":5.94,
+    "a moderate amount":23.94,
+    "a little":23.94,
+    "not at all":43.53
+  },
+  {
+    "question":"Q3",
+    "region":"Balochistan",
+    "completely":4.57,
+    "a lot":14.16,
+    "a moderate amount":24.43,
+    "a little":12.79,
+    "not at all":37.1
+  },
+  {
+    "question":"Q4",
+    "region":"Pakistan",
+    "completely":15.57,
+    "a lot":14.18,
+    "a moderate amount":22.73,
+    "a little":24.47,
+    "not at all":20.2
+  },
+  {
+    "question":"Q4",
+    "region":"Punjab",
+    "completely":19.74,
+    "a lot":12.24,
+    "a moderate amount":23.76,
+    "a little":22.21,
+    "not at all":18.58
+  },
+  {
+    "question":"Q4",
+    "region":"Sindh",
+    "completely":11.36,
+    "a lot":15.32,
+    "a moderate amount":19.76,
+    "a little":26.68,
+    "not at all":23.72
+  },
+  {
+    "question":"Q4",
+    "region":"Khyber Pakhtunkhwa",
+    "completely":13.12,
+    "a lot":15.69,
+    "a moderate amount":26.33,
+    "a little":25.71,
+    "not at all":17.02
+  },
+  {
+    "question":"Q4",
+    "region":"Balochistan",
+    "completely":13.93,
+    "a lot":15.87,
+    "a moderate amount":20.21,
+    "a little":25.57,
+    "not at all":22.95
+  },
+  {
+    "question":"Q5",
+    "region":"Pakistan",
+    "completely":1.53,
+    "a lot":7.12,
+    "a moderate amount":11.55,
+    "a little":19.6,
+    "not at all":58.1
+  },
+  {
+    "question":"Q5",
+    "region":"Punjab",
+    "completely":1.2,
+    "a lot":6.66,
+    "a moderate amount":9.21,
+    "a little":18.7,
+    "not at all":61.5
+  },
+  {
+    "question":"Q5",
+    "region":"Sindh",
+    "completely":2.02,
+    "a lot":7.8,
+    "a moderate amount":12.77,
+    "a little":16.6,
+    "not at all":58
+  },
+  {
+    "question":"Q5",
+    "region":"Khyber Pakhtunkhwa",
+    "completely":1.68,
+    "a lot":9.04,
+    "a moderate amount":13.48,
+    "a little":23.14,
+    "not at all":51.9
+  },
+  {
+    "question":"Q5",
+    "region":"Balochistan",
+    "completely":1.48,
+    "a lot":4.79,
+    "a moderate amount":13.7,
+    "a little":22.72,
+    "not at all":55.94
+  },
+    {
+    "question":"Q6",
+    "region":"Pakistan",
+    "Sunnis are better Muslims":64.73,
+    "Shiites are better Muslim":3.33,
+    "Both are equal":27.82
+  },
+  {
+    "question":"Q6",
+    "region":"Punjab",
+    "Sunnis are better Muslims":66.51,
+    "Shiites are better Muslim":2.39,
+    "Both are equal":26.44
+  },
+  {
+    "question":"Q6",
+    "region":"Sindh",
+    "Sunnis are better Muslims":62.7,
+    "Shiites are better Muslim":4.44,
+    "Both are equal":29.64
+  },
+  {
+    "question":"Q6",
+    "region":"Khyber Pakhtunkhwa",
+    "Sunnis are better Muslims":66.49,
+    "Shiites are better Muslim":3.9,
+    "Both are equal":27.22
+  },
+  {
+    "question":"Q6",
+    "region":"Balochistan",
+    "Sunnis are better Muslims":60.84,
+    "Shiites are better Muslim":3.42,
+    "Both are equal":29.45
+  },
+   {
+    "question":"Q7",
+    "region":"Pakistan",
+    "less than 3000":11.8,
+    "3000 to 10,000":51.88,
+    "10,001 to 15,000":22.03,
+    "15,001 to 25,000":8.5,
+    "More than 25,000":2.1
+  },
+  {
+    "question":"Q7",
+    "region":"Punjab",
+    "less than 3000":4.19,
+    "3000 to 10,000":52.07,
+    "10,001 to 15,000":28.87,
+    "15,001 to 25,000":11.52,
+    "More than 25,000":1.71
+  },
+  {
+    "question":"Q7",
+    "region":"Sindh",
+    "less than 3000":16.13,
+    "3000 to 10,000":55.58,
+    "10,001 to 15,000":16.47,
+    "15,001 to 25,000":5.51,
+    "More than 25,000":2.82
+  },
+  {
+    "question":"Q7",
+    "region":"Khyber Pakhtunkhwa",
+    "less than 3000":5.85,
+    "3000 to 10,000":57.8,
+    "10,001 to 15,000":21.1,
+    "15,001 to 25,000":7.45,
+    "More than 25,000":1.68
+  },
+  {
+    "question":"Q7",
+    "region":"Balochistan",
+    "less than 3000":33.9,
+    "3000 to 10,000":37.44,
+    "10,001 to 15,000":13.13,
+    "15,001 to 25,000":6.28,
+    "More than 25,000":2.51
+  }
+]
